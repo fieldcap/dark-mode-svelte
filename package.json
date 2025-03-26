@@ -1,6 +1,6 @@
 {
 	"name": "dark-mode-svelte",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"description": "A simple and efficient dark mode manager for Svelte 5, supporting user preference persistence, system preference detection, and easy toggling.",
 	"keywords": [
 		"svelte",
