@@ -128,6 +128,7 @@ class DarkMode {
 
 		const isDark = this.mode === 'dark';
 		document.documentElement.classList.toggle('dark', isDark);
+		document.documentElement.style.colorScheme = isDark ? 'dark' : 'light';
 	}
 
 	/**

@@ -87,4 +87,26 @@ test.describe('Dark Mode', () => {
 		await page.emulateMedia({ colorScheme: 'dark' });
 		await expect(modeDisplay).toHaveText('Mode=dark');
 	});
+
+	test('should set the colorScheme style', async ({ page }) => {
+		const getColorStyle = async () => {
+			const element = await page.locator('html');
+			return await element.evaluate((el) => {
+				return window.getComputedStyle(el).getPropertyValue('color-scheme');
+			});
+		};
+
+		let colorScheme = await getColorStyle();
+		expect(colorScheme).toBe('light');
+
+		// Set dark mode
+		await page.getByTestId('dark-mode').click();
+		colorScheme = await getColorStyle();
+		expect(colorScheme).toBe('dark');
+
+		// Set light mode
+		await page.getByTestId('light-mode').click();
+		colorScheme = await getColorStyle();
+		expect(colorScheme).toBe('light');
+	});
 });
